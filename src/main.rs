@@ -3,7 +3,10 @@ mod constant;
 mod kind;
 
 use crate::{
-  book::{gen_name_from_short_sentence, get_item_from_books, get_rand_short_sentence_from_list, get_item_book},
+  book::{
+    gen_name_from_short_sentence, get_item_book, get_item_from_books,
+    get_rand_short_sentence_from_list,
+  },
   kind::BookKind,
 };
 

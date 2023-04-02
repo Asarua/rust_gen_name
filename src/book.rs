@@ -30,14 +30,14 @@ impl Book {
 pub type Books = Vec<Book>;
 
 pub fn get_item_book() -> (String, Books) {
-  use crate::constant::{JSON_BASE, JSON_NAMES};
+  use crate::constant::JSON_NAMES;
   use serde_json::from_str;
-  use std::{fs::read_to_string, path::Path};
+  use std::{env::current_dir, fs::read_to_string, path::Path};
 
   let index = thread_rng().gen_range(0..JSON_NAMES.len());
   let cur_type = JSON_NAMES.get(index).unwrap();
 
-  let json_path = Path::new(JSON_BASE).join(format!("{}.json", cur_type));
+  let json_path = Path::new(&current_dir().unwrap()).join(format!("./json/{}.json", cur_type));
   let item_lists = read_to_string(json_path).unwrap();
   let books: Books = from_str(item_lists.as_str()).unwrap();
 
